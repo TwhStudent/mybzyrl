@@ -81,15 +81,145 @@ tab.addEventListener('click', function () {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  const tabItems = document.querySelectorAll('.tab-item');
+  const contentsDiv = document.querySelector('.contents');
+  let currentFullscreenIndex = -1; // 记录当前全屏显示图片在对应部位数据中的索引
+  let currentPartData = []; // 记录当前全屏显示图片所属的部位数据
 
+  // 包含各人脸部位数据的数组
+  const facialDataList = [
+      {
+          partName: "人脸框标准",
+          data: []
+      },
+      {
+          partName: "人脸轮廓标准",
+          data: []
+      },
+      {
+          partName: "人脸眉毛标准",
+          data: []
+      },
+      {
+          partName: "人脸眼睛标准",
+          data: []
+      },
+      {
+          partName: "人脸鼻子标准",
+          data: []
+      },
+      {
+          partName: "人脸嘴部标准",
+          data: []
+      }
+  ];
 
+  const angles = [-90, -75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75, 90];
 
+  // 填充各人脸部位的示例图片数据
+  facialDataList.forEach(facialData => {
+      const partName = facialData.partName.toLowerCase().replace(/\s/g, '_');
+      angles.forEach(angle => {
+          facialData.data.push({
+              imgSrc: `images/${partName}_${angle}.jpg`,  // 假设图片存放在images文件夹下，按此格式命名，可按需修改路径
+              angleText: `${angle}度`
+          });
+      });
+  });
 
+  // 切换选项卡显示
+  tabItems.forEach(item => {
+      item.addEventListener('click', function () {
+          tabItems.forEach(otherItem => otherItem.classList.remove('active'));
+          this.classList.add('active');
 
+          // 先清空contents区域内容
+          contentsDiv.innerHTML = '';
 
+          // 根据点击的选项卡渲染对应图片数据
+          currentPartData = facialDataList.find(item => item.partName === this.textContent);
+          if (currentPartData) {
+              currentPartData.data.forEach(data => {
+                  const imageCard = document.createElement('div');
+                  imageCard.classList.add('image-card');
 
+                  const img = document.createElement('img');
+                  img.src = data.imgSrc;
+                  img.alt = `人脸${this.textContent}标准示例图（角度：${data.angleText}）`;
 
+                  // 给图片添加点击事件，点击时全屏显示该图片
+                  img.addEventListener('click', function () {
+                      currentFullscreenIndex = currentPartData.data.findIndex(d => d.imgSrc === data.imgSrc);
+                      showFullscreenImage(this.src, currentPartData.data);
+                  });
 
+                  const angleText = document.createElement('p');
+                  angleText.textContent = data.angleText;
+
+                  imageCard.appendChild(img);
+                  imageCard.appendChild(angleText);
+                  contentsDiv.appendChild(imageCard);
+              });
+          }
+      });
+  });
+
+  // 显示全屏图片的函数
+  function showFullscreenImage(currentSrc, partData) {
+      const overlay = document.createElement('div');
+      overlay.classList.add('fullscreen-overlay');
+
+      const fullscreenImg = document.createElement('img');
+      fullscreenImg.src = currentSrc;
+      fullscreenImg.classList.add('fullscreen-image');
+
+      const buttonContainer = document.createElement('div');
+      buttonContainer.classList.add('button-container');
+
+      const prevButton = document.createElement('button');
+      prevButton.textContent = "上一张";
+      prevButton.classList.add('control-button');
+      prevButton.addEventListener('click', function () {
+          currentFullscreenIndex = (currentFullscreenIndex - 1 + partData.length) % partData.length;
+          if (currentFullscreenIndex === partData.length - 1) {
+              alert("已经是第一张图片了，无法再切换上一张哦！");
+              currentFullscreenIndex = 0;
+          } else {
+              fullscreenImg.src = partData[currentFullscreenIndex].imgSrc;
+          }
+      });
+
+      const nextButton = document.createElement('button');
+      nextButton.textContent = "下一张";
+      nextButton.classList.add('control-button');
+      nextButton.addEventListener('click', function () {
+          currentFullscreenIndex = (currentFullscreenIndex + 1) % partData.length;
+          if (currentFullscreenIndex === 0) {
+              alert("已经是最后一张图片了，无法再切换下一张哦！");
+              currentFullscreenIndex = partData.length - 1;
+          } else {
+              fullscreenImg.src = partData[currentFullscreenIndex].imgSrc;
+          }
+      });
+
+      const closeButton = document.createElement('button');
+      closeButton.textContent = "关闭";
+      closeButton.classList.add('control-button');
+      closeButton.addEventListener('click', function () {
+          overlay.remove();
+      });
+
+      buttonContainer.appendChild(prevButton);
+      buttonContainer.appendChild(nextButton);
+      buttonContainer.appendChild(closeButton);
+
+      overlay.appendChild(fullscreenImg);
+      overlay.appendChild(buttonContainer);
+      document.body.appendChild(overlay);
+      overlay.style.display = 'flex';
+  }
+});
 
 
 
