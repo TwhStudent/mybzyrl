@@ -1,0 +1,326 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+ 
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #333;
+      padding: 12px 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      margin: 0 25px;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #555;
+      color: #FFD700;
+    }
+
+    nav a i {
+      margin-right: 8px;
+      font-size: 22px;
+    }
+
+
+
+    .avatar {
+        background-color: #555;
+        color: #FFD700;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* 选项卡容器样式 */
+.tab-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* 选项卡之间的间隔 */
+    margin-top: 30px;
+    border-bottom: 2px solid #ccc; /* 底部边框，模拟选项卡分隔线效果 */
+  }
+  
+  /* 单个选项卡样式 */
+  .tab {
+    cursor: pointer;
+    background-color: #f0f0f0; /* 较浅的背景色 */
+    color: #333;
+    font-family: 'Roboto', sans-serif; /* 更现代的字体 */
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 8px 8px 0 0; /* 更圆润的角 */
+    border: 1px solid transparent; /* 初始透明边框，用于交互效果 */
+    transition: all 0.3s ease; /* 过渡效果应用到所有属性变化上 */
+  }
+  
+  .tab:hover {
+    background-color: #e0e0e0; /* 鼠标悬停时的背景色变化 */
+    border-color: #ccc; /* 显示边框 */
+  }
+  
+  .tab.active {
+    background-color: #3498db; /* 选中时的背景色 */
+    color: white;
+    border-color: #3498db; /* 选中时的边框色 */
+    position: relative; /* 用于定位伪元素 */
+  }
+  
+  .tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px; /* 定位在选项卡底部，与下方边框重合 */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white; /* 选中时底部的白色指示线 */
+  }
+  
+  /* 选项卡内容区域样式 */
+  .tab-content {
+    background-color: #f8f8f8; /* 较浅的内容区域背景色 */
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    padding: 20px;
+    border-radius: 0 8px 8px 8px; /* 与选项卡对应，底部圆角 */
+    width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 增加阴影，提升立体感 */
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  .tab-content h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #3498db; /* 标题颜色与选项卡选中色呼应 */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* 全局样式重置，去除默认边距和内边距 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* 导航栏样式 */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    padding: 12px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin: 0 25px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #555;
+    color: #FFD700;
+}
+
+nav a i {
+    margin-right: 8px;
+    font-size: 22px;
+}
+
+/* 选项卡容器样式 */
+.tab-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    border-bottom: 2px solid #ccc;
+}
+
+/* 单个选项卡样式 */
+.tab {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+}
+
+.tab.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+    position: relative;
+}
+
+.tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+}
+
+/* 选项卡内容区域样式 */
+.tab-content {
+    background-color: #f8f8f8;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    padding: 20px;
+    border-radius: 0 8px 8px 8px;
+    width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #3498db;
+}
+
+/* 图片展示区域样式 */
+.image-display {
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.image-display img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.image-caption {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* 鼠标悬停在图片上时的样式 */
+.image-display img:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}

@@ -108,13 +108,6 @@
 
 
 
-
-
-
-
-
-
-
 /* styles.css */
 .tab-wrapper {
     display: flex;
@@ -157,4 +150,16 @@
   .tab-text {
     font-size: 20px;
     font-weight: bold;
+  }
+
+
+
+
+  a{
+    text-decoration: none;
+    color: #333333;
+  }
+
+  a:hover{
+    color: #333333;
   }
