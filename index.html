@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>百智云人脸标注答疑文档</title>
+    <title>验证</title>
 
 
     <link rel="stylesheet" href="css/index.css">
+
+    <script src="js/index.js"></script>
+    
 </head>
 <body>
     <div class="password-container">
@@ -16,93 +19,5 @@
       <div id="content" style="display: none;"></div>
 
 
-
-
-
-
-
-    <h1 class="a">人脸关键点标注示意图</h1>
-
-
-    <div class="nav a">
-        <ul>
-            <li>人脸框标准</li>
-            <li>人脸关键点标准</li>
-            <li>人脸眉毛标准</li>
-            <li>人脸眼睛标准</li>
-            <li>人脸鼻子标准</li>
-            <li>人脸嘴巴标准</li>
-        </ul>
-    </div>
-
-
-
-
-    <div class="display-area a">
-        <!-- 这里用于显示图片和对应的讲解内容 -->
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="image-tree a">
-        <div class="unlabeled-image">
-          <img src="frontFace/faceNone.png" alt="未标注图片">
-          <h3>未标注图片</h3>
-        </div>
-        <div class="demo-container">
-          <div class="error-image">
-            <img src="frontFace/facezq.png" alt="错误示范图片">
-            <h3>错误示范图片</h3>
-          </div>
-          <div class="correct-image">
-            <img src="frontFace/facezq.png" alt="正确示范图片">
-            <h3>正确示范图片</h3>
-          </div>
-        </div>
-      </div>
-
-
-
-<script>
-
-function checkPassword() {
-  var password = document.getElementById('password-input').value;
-  // 这里替换为你实际的暗号
-  var correctPassword = "admin";
-
-console.log(password,
-    correctPassword
-);
-
-  if (password == correctPassword) {
-    document.getElementById('content').style.display = 'block';
-    // 在这里可以使用AJAX或其他方式加载实际内容
-    // 以下是一个简单示例，直接在页面中插入一段文本
-    const all = document.querySelectorAll('.a');
-    all.forEach(element => {
-      element.style.display = 'block';
-    });
-
-    const password_container  = document.querySelector(".password-container") 
-    password_container.style.display = 'none';
-
-
-
-
-  } else {
-    alert('暗号错误，请重新输入！');
-  }
-}
-</script>
 </body>
 </html>
