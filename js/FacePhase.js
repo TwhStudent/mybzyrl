@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   ];
 
-  const angles = [-90, -75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75, 90];
+  const angles = [-90, -60, -30 , 30, 60];
 
   // 填充各人脸部位的示例图片数据
   facialDataList.forEach(facialData => {
